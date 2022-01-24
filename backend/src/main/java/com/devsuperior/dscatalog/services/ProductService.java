@@ -16,6 +16,7 @@ import com.devsuperior.dscatalog.entities.Category;
 import com.devsuperior.dscatalog.entities.Product;
 import com.devsuperior.dscatalog.repositories.CategoryRepository;
 import com.devsuperior.dscatalog.repositories.ProductRepository;
+import com.devsuperior.dscatalog.services.exceptions.DatabaseIntegrityViolationException;
 import com.devsuperior.dscatalog.services.exceptions.ResourceNotFoundException;
 
 @Service
@@ -67,7 +68,7 @@ public class ProductService {
 			throw new ResourceNotFoundException("Id not found " + id);
 		
 		} catch (DataIntegrityViolationException e) {
-			throw new DataIntegrityViolationException("Integrity violation");
+			throw new DatabaseIntegrityViolationException("Integrity violation");
 		}
 	
 		
